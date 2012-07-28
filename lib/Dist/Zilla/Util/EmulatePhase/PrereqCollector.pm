@@ -6,7 +6,7 @@ BEGIN {
   $Dist::Zilla::Util::EmulatePhase::PrereqCollector::AUTHORITY = 'cpan:KENTNL';
 }
 {
-  $Dist::Zilla::Util::EmulatePhase::PrereqCollector::VERSION = '0.01025801';
+  $Dist::Zilla::Util::EmulatePhase::PrereqCollector::VERSION = '0.01025802';
 }
 
 #ABSTRACT: A dummy Dist::Zilla to fake a 'prereq' object on.
@@ -36,6 +36,10 @@ sub find_files {
   return shift->shadow_zilla->find_files(@_);
 }
 
+
+sub plugins {
+  return [];
+}
 ## no critic ( Subroutines::RequireArgUnpacking, Subroutines::ProhibitUnusedPrivateSubroutines, Subroutines::ProtectPrivateSubs )
 
 
@@ -52,8 +56,8 @@ sub _is_white_listed {
 }
 
 sub _share_dir_map {
-  my $self       = shift;
-  my $package    = [ caller 0 ]->[0];
+  my $self    = shift;
+  my $package = [ caller 0 ]->[0];
   ## no critic (ProhibitMagicNumbers)
   my $subroutine = [ caller 1 ]->[3];
 
@@ -80,13 +84,15 @@ Dist::Zilla::Util::EmulatePhase::PrereqCollector - A dummy Dist::Zilla to fake a
 
 =head1 VERSION
 
-version 0.01025801
+version 0.01025802
 
 =head1 METHODS
 
 =head2 find_files
 
 L<< C<Dist::Zilla>'s C<find_files>|Dist::Zilla/find_files >> proxy.
+
+=head2 plugins
 
 =head2 _share_dir_map
 
